@@ -1,5 +1,4 @@
 // src/models/Cart.js or wherever your Cart model is defined
-
 import mongoose from 'mongoose';
 
 const cartSchema = new mongoose.Schema({
@@ -18,5 +17,7 @@ const cartSchema = new mongoose.Schema({
     },
   }],
 });
+
+
 
 export const Cart = mongoose.models.Cart || mongoose.model('Cart', cartSchema);
