@@ -2,7 +2,7 @@ import Providers from "@/components/Providers";
 import "./globals.css";
 import Header from "@/components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
-import { CartSyncHandler } from "@/components/CartSyncHandler";
+
 
 export default function RootLayout({ children }) {
   return (
@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
         <Providers>
           <Header/>
           <main>
-           <CartSyncHandler/>
+         
             {children}
           </main>
         </Providers>
