@@ -2,7 +2,8 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 
-import { createUser, deleteUser, updateUser } from "@/lib/actions/user.action";
+import { createUser, deleteUser} from "@/lib/actions/user.action";
+import { createCart } from "@/lib/actions/cart.action";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -57,7 +58,10 @@ export async function POST(req) {
     // Create a user in the database
     const { id, email_addresses, image_url, username, first_name, last_name } =
       evt.data;
-
+    const mongoCart = await createCart({
+      userId: id,
+      items: [],
+    });
     const mongoUser = await createUser({
       clerkId: id,
       name: `${first_name}${last_name ? ` ${last_name}` : ""}`,

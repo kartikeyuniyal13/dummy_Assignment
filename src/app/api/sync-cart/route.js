@@ -8,9 +8,7 @@ export async function POST(req) {
 
   try {
     // Validate cartItems structure
-    if (!Array.isArray(cartItems) || !cartItems.every(item => item.productID && item.quantity)) {
-      return NextResponse.json({ success: false, error: "Invalid cart items format." }, { status: 400 });
-    }
+   
 
     let cart = await getCart(userId);
     
