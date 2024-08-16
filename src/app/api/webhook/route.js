@@ -63,8 +63,8 @@ export async function POST(req) {
         cart = await createCart({ userId: id, items: [] });
         console.log("Created cart:", cart);
       } catch (err) {
-        console.error("Error creating cart:", err);
-        return new Response("Error creating cart", { status: 500 });
+        console.error("Error creating cart route:", err);
+        return new Response("Error creating cart route", { status: 500 });
       }
 
       console.log("Creating user in MongoDB:", id);
