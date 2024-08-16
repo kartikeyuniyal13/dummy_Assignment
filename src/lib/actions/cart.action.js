@@ -1,6 +1,6 @@
 // src/lib/actions/cart.action.js
 
-import { Cart } from '@/models/Cart';
+import { Cart } from '@/dbModel/Cart';
 import { connectToDB } from '@/lib/db';
 
 export async function createCart({ userId, items }) {
