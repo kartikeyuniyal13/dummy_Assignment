@@ -2,7 +2,7 @@
 import { User } from '@/dbModel/User';
 import { connectToDb } from '../db'; // Adjust the path as per your project structure
 
-async function createUser(userData) {
+export async function createUser(userData) {
   try {
     await connectToDb();
     const newUser = await User.create(userData); // Fixed usage
