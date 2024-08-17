@@ -20,7 +20,7 @@ export const connectToDb = async () => {
     try {
         // Attempt to connect to MongoDB
         await mongoose.connect(mongoUri, {
-            dbName: "myshopdb",
+            dbName: "newdb",
         });
         isConnected = true;
         console.log("Connected to database");
