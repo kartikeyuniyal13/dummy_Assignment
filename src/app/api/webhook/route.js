@@ -1,6 +1,6 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
-import { WebhookEvent } from '@clerk/nextjs/server'
+import {createUser} from '@lib/actions/user.action'
 
 export async function POST(req) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
@@ -50,8 +50,23 @@ export async function POST(req) {
   // For this guide, you simply log the payload to the console
   const { id } = evt.data
   const eventType = evt.type
-  console.log(`Webhook with and ID of ${id} and type of ${eventType}`)
-  console.log('Webhook body:', body)
+  //   Create User webhook
+  if (eventType === "user.created") {
+    // Create a user in the database
+    const { id, email_addresses,username, first_name, last_name } =
+      evt.data;
+
+    const mongoUser = await createUser({
+      clerkId: id,
+      name: `${first_name}${last_name ? ` ${last_name}` : ""}`,
+      username: username||"",
+      email: email_addresses[0].email_address,
+    });
+    console.log(`Webhook with and ID of ${id} and type of ${eventType}`)
+    console.log('Webhook body:', body)
+    return NextResponse.json({ message: "OK", user: mongoUser });
+  }
+
 
   return new Response('', { status: 200 })
 }
