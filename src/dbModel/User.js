@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    cartId: {
+        type: String,
+        required: false,
+    },
 });
 
 export const User = mongoose.models.User || mongoose.model('User', userSchema);
