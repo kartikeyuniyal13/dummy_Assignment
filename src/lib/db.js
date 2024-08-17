@@ -11,7 +11,7 @@ export const connectToDb = async () => {
         return;
     }
     
-    const mongoUri = process.env.MONGO_URI;
+    const mongoUri = process.env.MONGODB_URI;
     if (!mongoUri) {
         console.error("MONGO_URI environment variable is not defined");
         return;
