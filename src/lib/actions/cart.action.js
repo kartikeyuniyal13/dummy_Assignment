@@ -1,11 +1,11 @@
 // src/lib/actions/cart.action.js
 
 import { Cart } from '@/dbModel/Cart';
-import { connectToDB } from '@/lib/db';
+import { connectToDb} from '@/lib/db';
 
 export async function createCart({ userId, items }) {
   try {
-    await connectToDB();
+    await connectToDb();
     const newCart = await Cart.create({ userId, items });
     return newCart;
   } catch (error) {
